@@ -1,0 +1,11 @@
+Kuha_Pituus = float(input("Enter the length of the zander in centimeters: "))
+
+kuha_too_short = Kuha_Pituus - 42
+kuha_cmleft = kuha_too_short - kuha_too_short * 2
+
+if Kuha_Pituus >= 42:
+    print("The zander meets the size limit.")
+else:
+    print("The zander does not meet the size limit.")
+    print("Please release the fish back into the lake.")
+    print("The fish was", f"{kuha_cmleft:.1f}", "centimeters below the size limit.")
