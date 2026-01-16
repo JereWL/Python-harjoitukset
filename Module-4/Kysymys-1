@@ -1,0 +1,8 @@
+luku = 1
+saavutettava_luku = 1000
+while luku < saavutettava_luku:
+    if luku % 3 == 0:
+        print(luku)
+        luku = luku + 1
+    else:
+        luku = luku + 1
