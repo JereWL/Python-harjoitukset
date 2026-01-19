@@ -1,0 +1,20 @@
+username_R = "python"
+password_R = "rules"
+yritykset = 0
+if yritykset == 5:
+    print("Access denied")
+
+while yritykset < 5:
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+    if username != username_R or password != password_R:
+        yritykset += 1
+        if yritykset == 5:
+            break
+        print("Incorrect username or password. Please try again.")
+    if username == username_R and password == password_R:
+        print("Welcome")
+        break
+
+if yritykset == 5:
+    print("Access denied")

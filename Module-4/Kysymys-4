@@ -1,0 +1,13 @@
+import random
+
+numero = random.randint(1,10)
+arvaus = ""
+
+while arvaus != numero:
+    arvaus = int(input("Guess a number (1-10): "))
+    if arvaus < numero:
+        print("Too low")
+    if arvaus > numero:
+        print("Too high")
+    if arvaus == numero:
+        print("Correct")

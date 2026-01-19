@@ -1,0 +1,15 @@
+numero = input("Enter a number (or press Enter to quit): ")
+numero_s = numero
+numero_f = numero 
+
+while numero != "":
+    if numero == "":
+        break
+    if float(numero) < float(numero_s):
+        numero_s = numero
+    if float(numero) > float(numero_f):
+        numero_f = numero
+    numero = input("Enter a number (or press Enter to quit): ")
+
+print(f"Smallest number: {float(numero_s)}")
+print(f"Largest number: {float(numero_f)}")
