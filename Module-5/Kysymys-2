@@ -1,0 +1,15 @@
+numerot = []
+n = 0
+while True:
+    numero = input("Enter a number: ")
+    if numero == "":
+        break
+    numerot.append(float(numero))
+
+print ("The greatest numbers in descending order:")
+numerot.sort(reverse=True)
+
+for numero in numerot:
+    if n < 5:
+        print(float(numerot[n]))
+        n += 1

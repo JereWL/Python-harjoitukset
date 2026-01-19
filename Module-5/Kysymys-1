@@ -1,0 +1,8 @@
+import random 
+nopat = int(input("How many dice to roll: "))
+juokseva_luku = 0
+
+for i in range(nopat):
+    nopan_luku = random.randint(1, 6)
+    juokseva_luku += nopan_luku
+print(f"Sum of the dice: {juokseva_luku}")
