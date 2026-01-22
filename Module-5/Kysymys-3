@@ -1,0 +1,27 @@
+luku = int(input("Enter an integer: "))
+
+if luku <= 1:
+    print(f"{luku} is not a prime number.")
+    exit()
+
+if luku == 2:
+    print(f"{luku} is a prime number.")
+    exit()
+
+if luku % 2 == 0:
+    print(f"{luku} is not a prime number.")
+    exit()
+
+jakaja = 3
+on_alkuluku = True
+
+while jakaja * jakaja <= luku:
+    if luku % jakaja == 0:
+        on_alkuluku = False
+        break
+    jakaja += 2
+
+if on_alkuluku:
+    print(f"{luku} is a prime number.")
+else:
+    print(f"{luku} is not a prime number.")

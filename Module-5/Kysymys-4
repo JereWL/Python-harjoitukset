@@ -1,0 +1,10 @@
+list = []
+
+for i in range(5):
+    kaupunki = input("Enter the name of a city: ")
+    list.append(kaupunki)
+print("\n")
+print("The cities you entered: ")
+for kaupunki in list:
+    print(kaupunki)
+
