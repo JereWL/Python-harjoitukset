@@ -1,0 +1,10 @@
+import random
+
+def roll_dice():
+    return random.randint(1,6)
+
+while True:
+    dice = roll_dice()
+    print(dice)
+    if dice == 6:
+        break
