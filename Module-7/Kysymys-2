@@ -1,0 +1,14 @@
+names = set()
+new_name = " "
+while new_name != "":
+    new_name = input("Give name (Enter to stop): ")
+    if new_name == "":
+        break
+    if not new_name in names:
+        names.add(new_name)
+        print("New name")
+    else:
+        print("Existing name")
+
+for n in names:
+    print(n)
