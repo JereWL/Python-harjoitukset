@@ -1,0 +1,25 @@
+import mysql.connector
+
+def get_airport(icao):
+    sql = f"SELECT name, municipality FROM airport WHERE ident = '{icao}'"
+    # print(sql)
+    cursor = yhteys.cursor()
+    cursor.execute(sql)
+    tulos = cursor.fetchone()
+    if tulos:
+        name, municipality = tulos
+        print(f"Airportname: {name} Location: {municipality}")
+    else:
+        print(f"No airport found with ICAO code {icao}")
+
+yhteys = mysql.connector.connect(
+    host='127.0.0.1',
+    port=3306,
+    database = 'flight_game',
+    user = 'jere',
+    password = 'Passw0rd§',
+    autocommit = True
+    )    
+
+icao = input("Enter the ICAO code of an airport:").upper()
+get_airport(icao)

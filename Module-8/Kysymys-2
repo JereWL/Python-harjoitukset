@@ -1,0 +1,31 @@
+import mysql.connector
+
+yhteys = mysql.connector.connect(
+    host='127.0.0.1',
+    port=3306,
+    database = 'flight_game',
+    user = 'jere',
+    password = 'Passw0rd§',
+    autocommit = True
+    ) 
+
+def get_airports_by_country(country_code):
+    sql = f"SELECT type, COUNT(*) FROM airport WHERE iso_country = '{country_code}' GROUP BY type"
+    # print(sql)
+    kursori = yhteys.cursor()
+    kursori.execute(sql)
+    tulos = kursori.fetchall()
+
+    if len(tulos) == 0:
+        print(f"No airports found for country code {country_code}.")
+        return
+
+    print(f"Airports in {country_code}: ")
+    for type, count in tulos:
+        print(f"{count} {type}")
+
+def run_country_program():
+    country_code = input("Enter the country code (e.g., FI for Finland): ").upper()
+    get_airports_by_country(country_code)
+
+run_country_program()
