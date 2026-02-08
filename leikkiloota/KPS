@@ -1,0 +1,36 @@
+import random
+
+def kps_peli(käsi, kone_käsi):
+    global p_käsi, p_kone
+    if käsi == kone_käsi:
+        print("Tasapeli")
+        return
+    voittavat = {
+        "KIVI":"SAKSET",
+        "SAKSET":"PAPERI",
+        "PAPERI":"KIVI"
+    }
+    if voittavat[käsi] == kone_käsi:
+        p_käsi += 1
+        print(f"VOITIT!!! Tilanne {p_käsi} : {p_kone}")
+        return
+    else:
+        p_kone += 1
+        print(f"Hävisit Tilanne {p_käsi} : {p_kone}")
+        
+p_kone = 0
+p_käsi = 0
+kierrokset = input("Anna kierrosten määrä mitä haluat pelata: ")
+for n in range(int(kierrokset)):
+    valinnat = ["KIVI", "SAKSET", "PAPERI"]
+    käsi = input("1. Kivi 2. Sakset 3. Paperi: ")
+    while True:
+        if 1 <= int(käsi) <= 3:
+            käsi = valinnat[int(käsi) -1]
+            break
+        else:
+            käsi = input("Väärä numero 1. Kivi 2. Sakset 3. Paperi: ")
+    kone_käsi = valinnat[random.randint(0,2)]
+    kps_peli(käsi, kone_käsi)
+    print(f"Sinä valitsit {käsi} ja Kone valitsi {kone_käsi}.")
+    n += 1
