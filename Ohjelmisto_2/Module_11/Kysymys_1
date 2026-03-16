@@ -1,0 +1,24 @@
+class Publication:
+    def __init__(self, name: str):
+        self.name: str = name
+
+
+class Book(Publication):
+    def __init__(self, name: str, author: str, page_count: int):
+        super().__init__(name)
+        self.author: str = author
+        self.page_count: int = page_count
+
+
+    def print_information(self):
+        print(f"Book name: {self.name}, Pages: {self.page_count}, Author: {self.author}")
+
+
+class Magazine(Publication):
+    def __init__(self, name: str, chief_editor: str):
+        super().__init__(name)
+        self.chief_editor: str = chief_editor
+
+
+    def print_information(self):
+        print(f"Magazine name: {self.name}, Chief editor: {self.chief_editor}")
