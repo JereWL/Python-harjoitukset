@@ -1,0 +1,7 @@
+
+def tuplaus(numerot):
+    return [n * 2 for n in numerot]
+
+numerot = [1, 2, 5, 9, 29]
+tuplaukset = tuplaus(numerot)
+print(tuplaukset)
