@@ -1,0 +1,9 @@
+import requests
+
+try:
+    request = requests.get("https://api.chucknorris.io/jokes/random")
+    if request.status_code == 200:
+        vitsi = request.json()
+        print(vitsi["value"])
+except requests.exceptions.RequestException as e:
+    print(f"Virhe tapahtui: {e}")
