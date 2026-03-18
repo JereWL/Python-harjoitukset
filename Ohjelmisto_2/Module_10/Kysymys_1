@@ -28,10 +28,3 @@ class Elevator:
 
     def floor_down(self):
         self.current_floor -= 1
-
-
-# Debug
-# h = Elevator(1, 10)
-# print("Basic elevator test:")
-# h.go_to_floor(5)
-# h.go_to_floor(1)
