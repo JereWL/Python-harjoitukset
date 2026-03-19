@@ -1,0 +1,32 @@
+import mysql.connector
+from flask import Flask, request, jsonify
+
+yhteys = mysql.connector.connect(
+    host="localhost",
+    port=3306,
+    user="jere",
+    password="Passw0rd§",
+    database="flight_game_old",
+    autocommit=True
+)
+
+def get_airport(icao):
+    sql = f"SELECT name, ident, municipality FROM airport WHERE ident = '{icao}'"
+    cursor = yhteys.cursor()
+    cursor.execute(sql)
+    tulos = cursor.fetchone()
+    if tulos:
+        name = tulos[0]
+        ident = tulos[1]
+        municipality = tulos[2]
+        return {"name": name, "ICAO": ident, "municipality": municipality}
+    else:
+        return {"error": f"No airport found with ICAO code {icao}"}
+
+app = Flask(__name__)
+@app.route('/airport/<string:icao>')
+def airport(icao):
+    tulos = get_airport(icao)
+    return jsonify(tulos)
+
+app.run(use_reloader=True, host='localhost', port=3000)
