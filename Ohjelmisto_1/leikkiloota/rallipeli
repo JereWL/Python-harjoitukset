@@ -1,0 +1,57 @@
+import random
+
+class Car:
+    def __init__(self, license_plate, maximum_speed, fuel):
+        self.license_plate = license_plate
+        self.maximum_speed = maximum_speed
+        self.current_speed = 0
+        self.travelled_distance = 0
+        self.fuel = fuel
+        self.fuel_consumption = 1
+        self.tire_wear = 0
+        self.pit_stops = 0
+        
+    def accelerate(self, speed_increase):
+        self.current_speed += speed_increase
+        if self.current_speed >= self.maximum_speed:
+            self.current_speed = self.maximum_speed
+        if self.current_speed < 0:
+            self.current_speed = 0
+    
+    def pit_stop(self):
+        self.pit_stops += 1
+        self.tire_wear = 0
+        self.fuel = 60
+
+    def drive(self, hours, tire_wear):
+        self.travelled_distance += self.current_speed * hours
+        self.tire_wear += tire_wear * hours 
+        self.fuel -= self.fuel_consumption * (hours + random.randint(0, 4))
+
+def race(cars):
+    race_finished = False
+
+    while not race_finished:
+        for car in cars:
+            speed_change = random.randint(-10 ,25)
+            car.accelerate(speed_change)
+            car.drive(1, random.randint(1, 5))
+            if car.fuel <= 0:
+                car.pit_stop()
+                car.current_speed = 0
+            elif car.tire_wear >= 100:
+                car.pit_stop()
+                car.current_speed = 0
+            print(f"Car {car.license_plate} is driving at {car.current_speed} km/h, travelled {car.travelled_distance:.2f} km, fuel left: {car.fuel:.2f}, tire wear: {car.tire_wear:.2f}")
+            if car.travelled_distance >= 10000:
+                race_finished = True
+
+    return cars
+
+print("Welcome to the race!")
+car1 = Car("ABC-123", 220, 60)
+car2 = Car("DEF-456", 220, 60)
+cars = [car1, car2]
+final_cars = race(cars)
+for car in final_cars:
+    print(f"Car {car.license_plate} travelled {car.travelled_distance:.2f} km at a maximum speed of {car.maximum_speed} km/h. Pit stops: {car.pit_stops}")
